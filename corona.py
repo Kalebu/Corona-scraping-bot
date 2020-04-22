@@ -12,6 +12,7 @@ def get_country_iso(country_name = None):
             with open('data.country') as file:
                 content = file.read()
             data_iso = json.loads(content)
+            country_name = get_close_matches(country_name, data_iso.keys())[0]
             isocode = data_iso.get(country_name, False)
             return isocode
         else:
